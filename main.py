@@ -9,7 +9,7 @@ topic='tesla'
 fdate=date.strftime('%Y-%m-%d')
 api_key='277ead44cf2a4b6390bdf077aceeb055'
 
-url='https://newsapi.org/v2/everything?'\
+url='https://newsapi.orgi/v2/everything?'\
     f'q={topic}&from={fdate}&sortBy=publishedAt&'\
     f'apiKey={api_key}&'\
     'language=en'
@@ -17,6 +17,9 @@ url='https://newsapi.org/v2/everything?'\
 # make request
 try:
     request=requests.get(url=url)
+# except Exception as e:
+#     print(f'Error establishing conn to url:\n{url}\n\nException: {e}')
+#     exit()
 except:
     print(f'Error establishing conn to url:\n{url}')
     exit()

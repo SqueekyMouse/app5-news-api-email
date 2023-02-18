@@ -23,6 +23,9 @@ def send_email(message='Subject: Msg Failed\n',sub='Default Sub')->bool:
             server.sendmail(from_addr=username,to_addrs=receiver,
                             msg=message)
             status=True
+        # except Exception as e:
+        #     print(f'Exception: {e}')
+        #     status=False
         except:
             status=False
     
