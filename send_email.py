@@ -2,7 +2,7 @@ import smtplib
 import ssl
 import os
 
-def send_email(message,sub=''):
+def send_email(message='Subject: Msg Failed\n',sub='Default Sub')->bool:
     host='smtp.gmail.com'
     port=465
     username='appuser565@gmail.com'
@@ -16,9 +16,15 @@ def send_email(message,sub=''):
     # raw_msg=f'Subject: {sub}\r\n{message}'
     
     with smtplib.SMTP_SSL(host=host,port=port,context=context) as server:
-        server.login(user=username,password=password)
-        # server.sendmail(from_addr=username,to_addrs=receiver,
-                        # msg=raw_msg.encode(encoding='utf-8'))
-        server.sendmail(from_addr=username,to_addrs=receiver,
-                        msg=message)
+        try: 
+            server.login(user=username,password=password)
+            # server.sendmail(from_addr=username,to_addrs=receiver,
+                            # msg=raw_msg.encode(encoding='utf-8'))
+            server.sendmail(from_addr=username,to_addrs=receiver,
+                            msg=message)
+            status=True
+        except:
+            status=False
+    
+    return(status)
 
